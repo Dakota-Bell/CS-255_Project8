@@ -20,14 +20,13 @@ int main()
 {
 	int choice = 0;
 	linkedListType<string> myBookStack;
-	linkedQueueType<string> myBookQueue;
+	linkedQueueType<linkedStackType<Book*> > myBookQueue;
+	linkedStackType<Book*> bS;
+	// IN THE HOOD IM LIKE PRINCESS DIANA
 	
 	
 	while(choice != 10)
 	{
-		linkedList<string> stackName;
-		linkedQueueType<
-		linkedStackType<Book*> bS;
 		menu();
 		cin >> choice;
 		switch(choice)
