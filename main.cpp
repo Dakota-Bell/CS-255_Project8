@@ -25,6 +25,9 @@ int main()
 	
 	while(choice != 10)
 	{
+		linkedList<string> stackName;
+		linkedQueueType<
+		linkedStackType<Book*> bS;
 		menu();
 		cin >> choice;
 		switch(choice)
