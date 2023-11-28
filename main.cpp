@@ -8,20 +8,20 @@ void menu(); // just displays the user options
 void createStack(linkedListType<string>&, linkedQueueType<string>&);
 string deleteStack(linkedListType<string>&);
 string printStack(linkedListType<string>&);
-//void updateStack();
-//void loadBookFile(string);
-//void addBookToStack();
-//string printStackTitles();
-//string printStackTop();
-//void removeBook();
+void updateStack();
+void loadBookFile(string);
+void addBookToStack();
+void printStackTitles();
+void printStackTop();
+void removeBook();
 
 
 int main()
 {
 	int choice = 0;
 	linkedListType<string> myBookStack;
-	linkedQueueType<linkedStackType<Book*> > myBookQueue;
-	linkedStackType<Book*> bS;
+	linkedQueueType<linkedStack<Book*> > myBookQueue;
+	linkedStack<Book*> bS;
 	// IN THE HOOD IM LIKE PRINCESS DIANA
 	
 	
@@ -85,7 +85,7 @@ void createStack(linkedListType<string>& name, linkedQueueType<string>& queue)
 	cout << "Enter the name of your stack: " << endl;
 	cin >> stackName;
 	name.insert(stackName); // adds to the bottom of the stack
-	queue = name;
+	//queue = name;
 }
 
 //void deleteStack(linkedListType<string>& temp)
@@ -115,25 +115,43 @@ void createStack(linkedListType<string>& name, linkedQueueType<string>& queue)
 //	
 //}
 //
-//void addBookToStack()
-//{
-//
-//}
-//
-//string printStackTitles()
-//{
-//	
-//}
-//
-//string printStackTop()
-//{
-//	// 
-//}
-//
-//void removeBook()
-//{
-////	queueLinkedList<Type> *temp;
-////	temp = queueFront;
-////	queueFront = queueFront->link;
-////	delete temp;
-//}
+void addBookToStack()
+{
+	
+}
+
+void printStackTitles()
+{
+	// need a temp to have as a sentinel for a loop
+	linkedListType<string>* temp;
+	
+	while(temp != nullptr)
+	{
+		// name of bookstack.top
+		temp->top(); // display the title of the book
+		temp->pop(); // pop the temp book off the top so the next book's title can be shown
+	}
+}
+
+void printStackTop()
+{
+	// simply print whatever is the book title is on top for the current book stack
+	linkedListType<Book*> myBookStack;
+	linkedListType<Book*> temp;
+	
+	temp = myBookStack; // make a copy of the bookStack 
+	
+	temp->top();
+	
+	
+	
+	// then do bookTitle.pop
+}
+
+void removeBook(linkedListType<string> myBookStack)
+{
+	linkedQueueType<linkedListType<string>> *temp;
+	temp = myBookStack; // make a copy of the list
+	myBookStack->link; // link to the next stack of books
+	delete *temp; // delete the temperary variable
+}
