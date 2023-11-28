@@ -10,7 +10,7 @@ NODE STRUCT FOR LINKED LIST STACK
 template<class Type>
 struct nodeType
 {
-	nodeType* link;
+	nodeType<Type>* link;
 	string info;	
 };
 
@@ -88,12 +88,12 @@ string Book<Type>::getISBNum()
 	return isbNum;
 }
 
-/*
+
 template<class Type>
-ostream& operator<<(ostream& os, Type& rhs)
+ostream& operator<<(ostream& os, Book& rhs)
 {
 	os << "Title: " << rhs.getTitle() << "\n" 
-	<< "Author: " << rhs.getName() << "\n" 
+	<< "Author: " << rhs.getAuthor() << "\n" 
 	<< "ISBN: " << rhs.getISBNum() << "\n";
 	return os; // displays all of the above to the screen
-}*/
+}
