@@ -3,8 +3,6 @@
 #include <fstream>
 using namespace std;
 #include "Book.h"
-#include "queueLinkedList.h"
-#include "linkedListStack.h"
 
 template <class Type>
 
