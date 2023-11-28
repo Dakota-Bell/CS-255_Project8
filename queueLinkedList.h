@@ -11,12 +11,10 @@
 using namespace std;
 
 template <class Type>
- 
-// YES YOU CAN HAVE A STRUCT INSIDE THE SAME FILE AS THE CLASS FILE
 class linkedQueueType
 {
 public:
-    const linkedQueueType<Type>& operator=(const linkedQueueType<Type>&);
+	linkedQueueType<Type>& operator=(const linkedQueueType<Type>&);
       //Overload the assignment operator.
 
     bool isEmptyQueue() const;
@@ -59,6 +57,8 @@ public:
       //Postcondition: The queue is changed and the first
       //               element is removed from the queue.
 
+	//linkedQueueType<Type>& operator=(const linkedQueueType<Type>&);
+
 	copyList(const linkedQueueType& otherList);
 
     linkedQueueType();
@@ -71,45 +71,44 @@ public:
       //Destructor
 
 private:
-    nodeType<Type> *queueFront; //pointer to the front of
+    nodeType<Type>* queueFront; //pointer to the front of
                                 //the queue
-    nodeType<Type> *queueRear;  //pointer to the rear of
+    nodeType<Type>* queueRear;  //pointer to the rear of
                                 //the queue
 };
 
 template <class Type>
-const linkedQueueType<Type>&::linkedQueueType<Type> operator=(const linkedQueueType<Type>& otherQueue)
+linkedQueueType<Type>& linkedQueueType<Type>::operator=(const linkedQueueType<Type>& otherQueue)
 {
-	//Write the definition of to overload the assignment operator
-    
-	if(this != &otherQueue) // if me (pointer) is not equal to the address of otherQueue
-	{
-	    copyQueue(otherQueue); // make a copy of the otherQueue
-	}
-	return *this; // return me (pointer) dereferenced
+    //Write the definition of to overload the assignment operator
 
-} //end assignment operator
+    if (this != &otherQueue) // if me (pointer) is not equal to the address of otherQueue
+    {
+        copyList(otherQueue); // make a copy of the otherQueue
+    }
+    return *this; // return me (pointer) dereferenced
+}
 
 template <class Type>
-copyQueue(const linkedQueueType& otherList)
+Type copyQueue(linkedQueueType<Type>& otherList)
 {
 	nodeType<Type> *newNode; //pointer to create a node
     nodeType<Type> *current; //pointer to traverse the list
 	
-	if (queueFront != nullptr) //if the list is nonempty, make it empty
-	       ~linkedQueueType();
+	if (newNode->queueFront != nullptr) //if the list is nonempty, make it empty
+	       ~linkedQueueType<Type>();
 		
 	if (otherList.queueFront == nullptr) //otherList is empty
 	{
-	    queueFront = nullptr;
-	    queueBack = nullptr;
-	    count = 0;
+	    newNode->queueFront = nullptr;
+	    newNode->queueBack = nullptr;
+	    //count = 0;
 	}
 	else
 	{
 	    current = otherList.queueFront; //current points to the
 	                                   //list to be copied
-	    count = otherList.count;
+	    //count = otherList.count;
 		
 	        //copy the first node
 	    newNode = new nodeType<Type>;  //create the node
@@ -117,7 +116,7 @@ copyQueue(const linkedQueueType& otherList)
 	    newNode->info = current->info; //copy the info
 	    newNode->link = nullptr;        //set the link field of
 		                                   //the node to nullptr
-	    queueBack = queueFront;              //make last point to the
+	    current->queueRear = current->queueFront;              //make last point to the
 		                                   //first node
 	    current = current->link;     //make current point to
 		                                     //the next node
@@ -129,8 +128,8 @@ copyQueue(const linkedQueueType& otherList)
 			newNode->info = current->info; //copy the info
 			newNode->link = nullptr;       //set the link of
 			                                        //newNode to nullptr
-			queueBack->link = newNode;  //attach newNode after last
-			queueBack = newNode;        //make last point to
+			newNode->queueRear->link = newNode;  //attach newNode after last
+			current->queueRear = newNode;        //make last point to
 			                                   //the actual last node
 			current = current->link;   //make current point
 			                                       //to the next node
@@ -248,26 +247,13 @@ linkedQueueType<Type>::~linkedQueueType()
     
 } //end destructor
 
-template <class Type>
-const linkedQueueType<Type>& linkedQueueType<Type>::operator=(const linkedQueueType<Type>& otherQueue)
-{
-    //Write the definition of to overload the assignment operator
-    
-    if(this != &otherQueue) // if me (pointer) is not equal to the address of otherQueue
-    {
-    	copyList(otherQueue); // make a copy of the otherQueue
-	}
-	return *this; // return me (pointer) dereferenced
-
-} //end assignment operator
-
 	//copy constructor
 template <class Type>
 linkedQueueType<Type>::linkedQueueType(const linkedQueueType<Type>& otherQueue)
 {
     //Write the definition of the copy constructor
     nodeType<Type> *newNode; // 
-    nodeType<Type> * current;
+    nodeType<Type> *current;
     
     if(queueFront != nullptr)// as long as the first value isn't null
     	deleteQueue(); // get rid of all values inside of the queue
