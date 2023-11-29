@@ -7,8 +7,6 @@
 
 using namespace std;
 
-void printStackNames(linkedListType<string>);
-
 int menu()
 {
     int choice;
@@ -31,17 +29,17 @@ int menu()
 
 int main()
 {   
+    ifstream file;
     int stackSelect;
     string name;
     string activeStack = "None Selected";
     linkedListType<string> stackName;
-    linkedQueueType<linkedStackType <Book*> > stackQueue;
+    linkedListType<linkedStackType <Book*> > sQ;
     linkedStackType<Book*> bookStack;
     int choice = 0;
-    cout << "Active Stack: None Selected" << endl;
     while(choice != 10)
     {
-        cout << "Active Stack: " << activeStack;
+        cout << "Active Stack: " << activeStack << endl;
         choice = menu();
         switch (choice)
         {
@@ -49,7 +47,7 @@ int main()
             
             break;
         case 2:
-            if(stackQueue.isEmpty())
+            if(_____.isEmpty())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
@@ -57,23 +55,15 @@ int main()
                 getline(cin, name);
                 stackName.insert(name); // string list of names
                 activeStack = name;
-                activeStack.initializeList(); // separate list of book stacks.
+                sQ.initializeList(); // separate list of book stacks.
             }
             break;
         case 3:
-            if(bookStack.isEmpty())
+            if(_____.isEmpty())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
-            	linkedStackType<Book*> tempStack;
-            	
-            	tempStack = bookStack; // do a deep copy via the overloaded assignment operator 
-            	
-            	while(tempStack != nullptr) // using a while loop because we dont know how 
-            	{
-                	tempStack.top(); // print the book that is on top
-					tempStack.pop(); // pop the top book off the 
-				}
+                ____.print();
             }
             break;
         case 4:
@@ -94,13 +84,26 @@ int main()
             }
             break;
         case 5:
-            // loadBooks();
+            if(______.isEmpty())
+            {
+                cout << "No Intend2Read Stacks Available" << endl;
+            }
+            else                
+                ____.push(Book(file));
+                
+            }
             break;
         case 6:
-            // addBook();
+            ______.push(Book());
             break;
         case 7:
-            // top();
+            ____.top();
+            break;
+        case 8:
+            break;
+
+        case 9:
+            break;
         
         default:
             break;
