@@ -49,23 +49,31 @@ int main()
             
             break;
         case 2:
-            if(_____.isEmpty())
+            if(stackQueue.isEmpty())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
                 cout << "Enter a name for your stack: " << endl;
                 getline(cin, name);
-                _____.insert(name); // string list of names
+                stackName.insert(name); // string list of names
                 activeStack = name;
-                _____.initializeList(); // separate list of book stacks.
+                activeStack.initializeList(); // separate list of book stacks.
             }
             break;
         case 3:
-            if(_____.isEmpty())
+            if(bookStack.isEmpty())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
-                ____.print();
+            	linkedStackType<Book*> tempStack;
+            	
+            	tempStack = bookStack; // do a deep copy via the overloaded assignment operator 
+            	
+            	while(tempStack != nullptr) // using a while loop because we dont know how 
+            	{
+                	tempStack.top(); // print the book that is on top
+					tempStack.pop(); // pop the top book off the 
+				}
             }
             break;
         case 4:
