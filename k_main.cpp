@@ -1,28 +1,50 @@
 #include <iostream>
 #include <fstream>
-#include "linkedStack.h"
+#include "linkedListStack.h"
+#include "queueLinked.h"
+#include "linkedList.h"
+#include "Book.h"
+
 using namespace std;
 
-int menu(string);
+int menu()
+{
+    int choice;
+    cout << "Make a Selection: " << endl;
+    cout << "\t1. Create a stack" << endl;
+    cout << "\t2. Delete a stack" << endl;
+    cout << "\t3. Print Stack Names" << endl;
+    cout << "\t4. Update Active Stack" << endl;
+    cout << "***Select for Active Stack: None Selected***" << endl;
+    cout << "\t5. Load Books From File" << endl;
+    cout << "\t6. Add Book to Stack" << endl;
+    cout << "\t7. Print Stack Top" << endl;
+    cout << "\t8. Print Stack Top" << endl;
+    cout << "\t9. Remove Book " << endl;
+    cout << "\t10. Quit" << endl;
+    cin >> choice;
+
+    return choice;
+}
 
 int main()
 {   
+    ifstream file;
     int stackSelect;
     string name;
     string activeStack = "None Selected";
     linkedListType<string> stackName;
-    linkedQueueType<linkedStackType <Book*> > stackQueue;
+    linkedListType<linkedStackType <Book*> > sQ;
     linkedStackType<Book*> bookStack;
     int choice = 0;
-    cout << "Active Stack: None Selected" << endl;
     while(choice != 10)
     {
-        cout << "Active Stack: " << activeStack;
+        cout << "Active Stack: " << activeStack << endl;
         choice = menu();
         switch (choice)
         {
-        case 1:            
-            if(stackQueue.isEmpty())
+        case 1:
+            if(stackName.isEmptyList())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
@@ -30,26 +52,22 @@ int main()
                 getline(cin, name);
                 stackName.insert(name); // string list of names
                 activeStack = name;
-                activeStack.initializeList(); // separate list of book stacks.
+                sQ.initializeList(); // separate list of book stacks.
+                bookStack.initializeStack();
+                sQ.insert(bookStack);
             }
             break;
         case 2:
-        	
+            if(!stackName.isEmptyList())
             break;
         case 3:
-            if(bookStack.isEmpty())
+            if(stackName.isEmptyList() && sQ.isEmptyList())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
-            	linkedStackType<Book*> *tempStack;
-            	
-            	tempStack = bookStack; // do a deep copy via the overloaded assignment operator 
-            	
-            	while(tempStack != nullptr) // using a while loop because we dont know how 
-            	{
-                	tempStack.top(); // print the book that is on top
-					tempStack.pop(); // pop the top book off the 
-				}
+                stackName.deleteNode(activeStack);
+                bookStack.initializeStack();
+                sQ.destroyList();
             }
             break;
         case 4:
@@ -70,46 +88,30 @@ int main()
             }
             break;
         case 5:
-            // loadBooks();
-        	
+            if(______.isEmpty())
+            {
+                cout << "No Intend2Read Stacks Available" << endl;
+            }
+            else                
+                ____.push(Book(file));
+                
+            }
             break;
         case 6:
-            // addBook();
+            ______.push(Book());
             break;
         case 7:
-            // top();
-        	break;
+            ____.top();
+            break;
         case 8:
-        	// print stack top
-        	break;
+            break;
+
         case 9:
-        	// remove book
-        	break;
+            break;
+        
         default:
             break;
         }
     }
     return 0;
-}
-
-
-
-int menu(string activeStack)
-{
-    int choice;
-    cout << "Make a Selection: " << endl;
-    cout << "\t1. Create a stack" << endl;
-    cout << "\t2. Delete a stack" << endl;
-    cout << "\t3. Print Stack Names" << endl;
-    cout << "\t4. Update Active Stack" << endl;
-    cout << "***Select for Active Stack: " << activeStack << "***" << endl;
-    cout << "\t5. Load Books From File" << endl;
-    cout << "\t6. Add Book to Stack" << endl;
-    cout << "\t7. Print Stack Top" << endl;
-    cout << "\t8. Print Stack Top" << endl;
-    cout << "\t9. Remove Book " << endl;
-    cout << "\t10. Quit" << endl;
-    cin >> choice;
-
-    return choice;
 }
