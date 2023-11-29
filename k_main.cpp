@@ -56,6 +56,8 @@ int main()
                 stackName.insert(name); // string list of names
                 activeStack = name;
                 sQ.initializeList(); // separate list of book stacks.
+                bookStack.initializeStack();
+                sQ.insert(bookStack);
             }
             break;
         case 3:
