@@ -47,7 +47,7 @@ int main()
             
             break;
         case 2:
-            if(_____.isEmpty())
+            if(stackName.isEmptyList())
                 cout << "No Intend2Read Stacks Available." << endl;
             else
             {
